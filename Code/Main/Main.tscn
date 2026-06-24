@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://cib786y4fr7cb"]
 
 [ext_resource type="Script" uid="uid://ckplnjj5kkyta" path="res://Main/Main.gd" id="1_lxy7q"]
+[ext_resource type="PackedScene" uid="uid://b3x2ya4csyglj" path="res://Animal/Animal.tscn" id="2_83ytx"]
 
 [node name="Main" type="Node" unique_id=1391425956]
 script = ExtResource("1_lxy7q")
+
+[node name="Animal" parent="." unique_id=1611622270 instance=ExtResource("2_83ytx")]
