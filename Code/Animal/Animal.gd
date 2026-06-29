@@ -1,12 +1,19 @@
 extends Node3D
 class_name Animal
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var leap_distance = 1.0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("move_left"):
+		position.x -= leap_distance
+	
+	if Input.is_action_just_pressed("move_right"):
+		position.x += leap_distance
+	
+	if Input.is_action_just_pressed("move_up"):
+		position.z -= leap_distance # Forward.
+	
+	if Input.is_action_just_pressed("move_down"):
+		position.z += leap_distance # Backward. 

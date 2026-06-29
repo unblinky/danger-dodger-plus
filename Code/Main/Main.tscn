@@ -35,7 +35,7 @@ environment = SubResource("Environment_ps1la")
 [node name="Animal" parent="." unique_id=1611622270 instance=ExtResource("2_83ytx")]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=921068242]
-transform = Transform3D(0.9998393, 0.0036444657, -0.017548375, 0.006671547, 0.8330673, 0.5531316, 0.016634844, -0.5531598, 0.83290917, 0.03184474, 2.3227277, 2.8469079)
+transform = Transform3D(0.99916553, -0.030007206, 0.027710235, 4.656613e-10, 0.6784291, 0.7346659, -0.040844698, -0.73405284, 0.67786294, -0.015523285, 12.108255, 9.615161)
 fov = 36.227673
 
 [node name="Ground" type="MeshInstance3D" parent="." unique_id=706901599]
