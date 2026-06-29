@@ -3,7 +3,41 @@
 [ext_resource type="Script" uid="uid://ckplnjj5kkyta" path="res://Main/Main.gd" id="1_lxy7q"]
 [ext_resource type="PackedScene" uid="uid://b3x2ya4csyglj" path="res://Animal/Animal.tscn" id="2_83ytx"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_83ytx"]
+sky_top_color = Color(0.5019608, 0.49411765, 0.49411765, 1)
+sky_horizon_color = Color(0.71344006, 0.73190093, 0.70123476, 1)
+ground_bottom_color = Color(0.11873678, 0.20042369, 0.07775884, 1)
+ground_horizon_color = Color(0.71344006, 0.73190093, 0.70123476, 1)
+
+[sub_resource type="Sky" id="Sky_amygn"]
+sky_material = SubResource("ProceduralSkyMaterial_83ytx")
+
+[sub_resource type="Environment" id="Environment_ps1la"]
+background_mode = 2
+sky = SubResource("Sky_amygn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8jnt"]
+albedo_color = Color(0.05680009, 0.23091522, 0.1386115, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sauc4"]
+size = Vector2(50, 50)
+
 [node name="Main" type="Node" unique_id=1391425956]
 script = ExtResource("1_lxy7q")
 
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=698441505]
+transform = Transform3D(0.9184464, 0.2776097, -0.2817608, 0, 0.71233463, 0.70184004, 0.39554554, -0.6446024, 0.65424114, -6.2955065, 10.7759495, 14.618002)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=403845521]
+environment = SubResource("Environment_ps1la")
+
 [node name="Animal" parent="." unique_id=1611622270 instance=ExtResource("2_83ytx")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=921068242]
+transform = Transform3D(0.9998393, 0.0036444657, -0.017548375, 0.006671547, 0.8330673, 0.5531316, 0.016634844, -0.5531598, 0.83290917, 0.03184474, 2.3227277, 2.8469079)
+fov = 36.227673
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=706901599]
+material_override = SubResource("StandardMaterial3D_b8jnt")
+mesh = SubResource("PlaneMesh_sauc4")
