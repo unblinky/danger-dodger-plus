@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://d10bdq3u7df63"]
+
+[ext_resource type="Script" uid="uid://dkvdtdch46qd1" path="res://Vehicle/Vehicle.gd" id="1_25uyk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u2i7p"]
+albedo_color = Color(0.4705063, 0.12728089, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fh211"]
+size = Vector3(0.6660156, 0.42944336, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fh211"]
+top_radius = 0.1772461
+bottom_radius = 0.1772461
+height = 0.7939453
+
+[sub_resource type="PrismMesh" id="PrismMesh_fh211"]
+left_to_right = 1.0
+size = Vector3(0.298, 0.144, 0.635)
+
+[node name="Vehicle" type="Node3D" unique_id=1567141910]
+script = ExtResource("1_25uyk")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=1858898231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27487087, 0)
+material_override = SubResource("StandardMaterial3D_u2i7p")
+mesh = SubResource("BoxMesh_fh211")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2111104280]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0.11410916, 0.22223115)
+mesh = SubResource("CylinderMesh_fh211")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=887638306]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0.11410916, -0.2744157)
+mesh = SubResource("CylinderMesh_fh211")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1905678952]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.57444525, -0.33807778)
+mesh = SubResource("PrismMesh_fh211")

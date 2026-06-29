@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ckplnjj5kkyta" path="res://Main/Main.gd" id="1_lxy7q"]
 [ext_resource type="PackedScene" uid="uid://b3x2ya4csyglj" path="res://Animal/Animal.tscn" id="2_83ytx"]
+[ext_resource type="PackedScene" uid="uid://berl535au27hs" path="res://Lane/Lane.tscn" id="3_ps1la"]
+[ext_resource type="PackedScene" uid="uid://d10bdq3u7df63" path="res://Vehicle/Vehicle.tscn" id="4_6aewd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_83ytx"]
 sky_top_color = Color(0.5019608, 0.49411765, 0.49411765, 1)
@@ -22,6 +24,9 @@ albedo_color = Color(0.05680009, 0.23091522, 0.1386115, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_sauc4"]
 size = Vector2(50, 50)
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fh211"]
+radius = 0.069
+
 [node name="Main" type="Node" unique_id=1391425956]
 script = ExtResource("1_lxy7q")
 
@@ -34,10 +39,42 @@ environment = SubResource("Environment_ps1la")
 
 [node name="Animal" parent="." unique_id=1611622270 instance=ExtResource("2_83ytx")]
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=921068242]
-transform = Transform3D(0.99916553, -0.030007206, 0.027710235, 4.656613e-10, 0.6784291, 0.7346659, -0.040844698, -0.73405284, 0.67786294, -0.015523285, 12.108255, 9.615161)
-fov = 36.227673
+[node name="Rig" type="Node3D" parent="Animal" unique_id=2124999951]
+transform = Transform3D(1, 0, 0, 0, 0.6238406, 0.7815516, 0, -0.7815516, 0.6238406, 0, 0.10647297, -1.2470665)
+
+[node name="Camera3D" type="Camera3D" parent="Animal/Rig" unique_id=921068242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7683716e-07, 15.737704)
+fov = 56.1
 
 [node name="Ground" type="MeshInstance3D" parent="." unique_id=706901599]
 material_override = SubResource("StandardMaterial3D_b8jnt")
 mesh = SubResource("PlaneMesh_sauc4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=515130880]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
+mesh = SubResource("CapsuleMesh_fh211")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Ground" unique_id=1337733457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -10)
+mesh = SubResource("CapsuleMesh_fh211")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Ground" unique_id=365077238]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
+mesh = SubResource("CapsuleMesh_fh211")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Ground" unique_id=452514167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -10)
+mesh = SubResource("CapsuleMesh_fh211")
+skeleton = NodePath("../..")
+
+[node name="Lane" parent="." unique_id=882810251 instance=ExtResource("3_ps1la")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="Vehicle" parent="Lane" unique_id=1567141910 instance=ExtResource("4_6aewd")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Lane2" parent="." unique_id=1175087689 instance=ExtResource("3_ps1la")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
