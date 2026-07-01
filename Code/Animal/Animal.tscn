@@ -13,31 +13,45 @@ size = Vector3(0.06011963, 0.621521, 0.26239014)
 
 [sub_resource type="SphereMesh" id="SphereMesh_yvsqr"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uunli"]
+albedo_color = Color(0.5219679, 0.23040357, 0.29027018, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_fh211"]
+
 [node name="Animal" type="Node3D" unique_id=1611622270]
 script = ExtResource("1_yvsqr")
 
-[node name="Body" type="MeshInstance3D" parent="." unique_id=1379391085]
+[node name="Graphics" type="Node3D" parent="." unique_id=1457047497]
+
+[node name="Body" type="MeshInstance3D" parent="Graphics" unique_id=1379391085]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008780956, 0.46922207, 0)
 mesh = SubResource("BoxMesh_fh211")
+skeleton = NodePath("../..")
+metadata/_edit_group_ = true
 
-[node name="EarR" type="MeshInstance3D" parent="Body" unique_id=689754235]
+[node name="EarR" type="MeshInstance3D" parent="Graphics/Body" unique_id=689754235]
 transform = Transform3D(0.88394004, 0.41777003, -0.21004376, -0.44535083, 0.88907695, -0.10585278, 0.14252299, 0.18711066, 0.97194487, 0.46571037, 0.6351528, -0.2653396)
 mesh = SubResource("BoxMesh_uunli")
 
-[node name="EarL" type="MeshInstance3D" parent="Body" unique_id=869476005]
+[node name="EarL" type="MeshInstance3D" parent="Graphics/Body" unique_id=869476005]
 transform = Transform3D(0.75704175, -0.52273864, 0.39195898, 0.4642092, 0.85249287, 0.24034469, -0.45977974, -1.4875282e-08, 0.888033, -0.4872176, 0.61453664, -0.24241447)
 mesh = SubResource("BoxMesh_uunli")
 
-[node name="Tail" type="MeshInstance3D" parent="Body" unique_id=2128601639]
+[node name="Tail" type="MeshInstance3D" parent="Graphics/Body" unique_id=2128601639]
 transform = Transform3D(0.316, 0, 0, 0, 0.316, 0, 0, 0, 0.316, -0.03817308, 0.17089844, 0.628713)
 mesh = SubResource("SphereMesh_fh211")
 
-[node name="Tail2" type="MeshInstance3D" parent="Body" unique_id=1036979934]
+[node name="EyeL" type="MeshInstance3D" parent="Graphics/Body" unique_id=1036979934]
 transform = Transform3D(0.316, 0, 0, 0, 0.316, 0, 0, 0, 0.316, -0.45263982, 0.11950719, -0.291273)
 material_override = ExtResource("2_w71v0")
 mesh = SubResource("SphereMesh_yvsqr")
 
-[node name="Tail3" type="MeshInstance3D" parent="Body" unique_id=262153841]
+[node name="EyeR" type="MeshInstance3D" parent="Graphics/Body" unique_id=262153841]
 transform = Transform3D(0.316, 0, 0, 0, 0.316, 0, 0, 0, 0.316, 0.44323385, 0.11950719, -0.2717024)
 material_override = ExtResource("2_w71v0")
 mesh = SubResource("SphereMesh_yvsqr")
+
+[node name="Nose" type="MeshInstance3D" parent="Graphics/Body" unique_id=1882221723]
+transform = Transform3D(-0.29599997, -5.3150522e-08, -3.9693076e-16, 4.363025e-08, -0.34361634, 0.0490578, -9.696512e-09, 0.076366276, 0.22073965, 0, 0, -0.48210275)
+material_override = SubResource("StandardMaterial3D_uunli")
+mesh = SubResource("PrismMesh_fh211")
