@@ -1,3 +1,11 @@
+# var = nouns
+# func = verbs
+# if match conditions
+# for = loops
+
+# 80%
+
+
 extends Area3D
 class_name Animal
 
@@ -25,11 +33,15 @@ func _ready() -> void:
 	current_spot = position
 	next_spot = position
 
+
 func on_entered(other_area: Area3D) -> void:
 	if other_area is Vehicle:
 		print("Lose a life.")
+	
 	if other_area is Goal:
 		print("Goal!!!")
+		# TODO: Do somthing more dynamic.
+		position = Vector3.ZERO
 
 
 func _process(delta: float) -> void:

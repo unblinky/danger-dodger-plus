@@ -61,3 +61,25 @@ mesh = SubResource("SphereMesh_yvsqr")
 transform = Transform3D(-0.29599997, -5.3150522e-08, -3.9693076e-16, 4.363025e-08, -0.34361634, 0.0490578, -9.696512e-09, 0.076366276, 0.22073965, 0, 0, -0.48210275)
 material_override = SubResource("StandardMaterial3D_uunli")
 mesh = SubResource("PrismMesh_fh211")
+
+[node name="UI" type="PanelContainer" parent="." unique_id=915517473]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -262.0
+offset_top = 54.0
+offset_right = -83.0
+offset_bottom = 153.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="UI" unique_id=1214470196]
+layout_mode = 2
+
+[node name="GoalsUI" type="Label" parent="UI/VBox" unique_id=195041180]
+layout_mode = 2
+text = "Goals remaining: 10"
+
+[node name="LivesUI" type="Label" parent="UI/VBox" unique_id=916532860]
+layout_mode = 2
+text = "Lives: 3"
