@@ -1,4 +1,4 @@
-extends Node3D
+extends Area3D
 class_name Animal
 
 
@@ -19,44 +19,57 @@ var next_spot: Vector3
 # lerp(position, next_spot, 0.25)
 
 func _ready() -> void:
+	# Signal hook.
+	area_entered.connect(on_entered)
+	
 	current_spot = position
 	next_spot = position
 
+func on_entered(other_area: Area3D) -> void:
+	if other_area is Vehicle:
+		print("Lose a life.")
+	if other_area is Goal:
+		print("Goal!!!")
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("move_left"):
-		# position.x -= leap_distance
-		next_spot = current_spot + Vector3.LEFT
-		weight = 0.0
-		graphics.rotation_degrees.y = 90.0
+	if weight >= 1.0:
+		if Input.is_action_just_pressed("move_left"):
+			# position.x -= leap_distance
+			next_spot = current_spot + Vector3.LEFT
+			weight = 0.0
+			graphics.rotation_degrees.y = 90.0
+		
+		if Input.is_action_just_pressed("move_right"):
+			#position.x += leap_distance
+			next_spot = current_spot + Vector3.RIGHT
+			weight = 0.0
+			graphics.rotation_degrees.y = -90.0
+		
+		# FIXME: 
+		if Input.is_action_just_pressed("move_up"):
+			#position.z -= leap_distance # Forward.
+			next_spot = current_spot + Vector3.FORWARD
+			weight = 0.0
+			graphics.rotation_degrees.y = 0.0
+		
+		if Input.is_action_just_pressed("move_down"):
+			#position.z += leap_distance # Backward. 
+			next_spot = current_spot + Vector3.BACK
+			weight = 0.0
+			graphics.rotation_degrees.y = 180.0
 	
-	if Input.is_action_just_pressed("move_right"):
-		#position.x += leap_distance
-		next_spot = current_spot + Vector3.RIGHT
-		weight = 0.0
-		graphics.rotation_degrees.y = -90.0
-	
-	if Input.is_action_just_pressed("move_up"):
-		#position.z -= leap_distance # Forward.
-		next_spot = current_spot + Vector3.FORWARD
-		weight = 0.0
-		graphics.rotation_degrees.y = 0.0
-	
-	if Input.is_action_just_pressed("move_down"):
-		#position.z += leap_distance # Backward. 
-		next_spot = current_spot + Vector3.BACK
-		weight = 0.0
-		graphics.rotation_degrees.y = 180.0
-	
-	# TESTING:
 	# Tweening.
 	if weight < 1.0:
 		weight += weight_speed * delta
-	# Resting.
-	else:
-		weight = 1.0
-		current_spot = next_spot
+		# Did we overrun the [0.0 - 1.0] clamp.
+		if weight > 1.0:
+			weight = 1.0
+			current_spot = next_spot
 	
-	print(weight)
+	# Resting.
+	#else:
+	#	weight = 1.0
+	
+	#print("Weight: ", weight)
 	position = lerp(current_spot, next_spot, weight)

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b3x2ya4csyglj" path="res://Animal/Animal.tscn" id="2_83ytx"]
 [ext_resource type="PackedScene" uid="uid://berl535au27hs" path="res://Lane/Lane.tscn" id="3_ps1la"]
 [ext_resource type="PackedScene" uid="uid://d10bdq3u7df63" path="res://Vehicle/Vehicle.tscn" id="4_6aewd"]
+[ext_resource type="PackedScene" uid="uid://c4v0peqkg130j" path="res://Goal/Goal.tscn" id="5_6aewd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_83ytx"]
 sky_top_color = Color(0.5019608, 0.49411765, 0.49411765, 1)
@@ -40,7 +41,7 @@ environment = SubResource("Environment_ps1la")
 [node name="Animal" parent="." unique_id=1611622270 instance=ExtResource("2_83ytx")]
 
 [node name="Rig" type="Node3D" parent="Animal" unique_id=2124999951]
-transform = Transform3D(1, 0, 0, 0, 0.6238406, 0.7815516, 0, -0.7815516, 0.6238406, 0, 0.10647297, -1.2470665)
+transform = Transform3D(0.909486, -0.3235424, 0.2610659, -2.1910337e-08, 0.6279631, 0.77824336, -0.4157344, -0.70780146, 0.57112384, 0, 0.10647297, -1.2470665)
 
 [node name="Camera3D" type="Camera3D" parent="Animal/Rig" unique_id=921068242]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7683716e-07, 15.737704)
@@ -75,4 +76,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -3)
 
 [node name="Vehicle" parent="Lane2" unique_id=840324458 instance=ExtResource("4_6aewd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Goal" parent="." unique_id=860213988 instance=ExtResource("5_6aewd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
