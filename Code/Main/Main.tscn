@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://berl535au27hs" path="res://Lane/Lane.tscn" id="3_ps1la"]
 [ext_resource type="PackedScene" uid="uid://d10bdq3u7df63" path="res://Vehicle/Vehicle.tscn" id="4_6aewd"]
 [ext_resource type="PackedScene" uid="uid://c4v0peqkg130j" path="res://Goal/Goal.tscn" id="5_6aewd"]
+[ext_resource type="PackedScene" uid="uid://dkrcw84mho1yp" path="res://PauseMenu/PauseMenu.tscn" id="6_u2i7p"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_83ytx"]
 sky_top_color = Color(0.5019608, 0.49411765, 0.49411765, 1)
@@ -27,28 +28,6 @@ size = Vector2(50, 50)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fh211"]
 radius = 0.069
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6aewd"]
-content_margin_left = 20.0
-content_margin_top = 9.0
-content_margin_right = 20.0
-content_margin_bottom = 20.0
-bg_color = Color(0.29967466, 0.66778356, 0.66767, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.13865176, 0.36753035, 0.3677084, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="LabelSettings" id="LabelSettings_6aewd"]
-font_size = 28
-font_color = Color(0.18039216, 0.3254902, 0.3254902, 1)
-outline_size = 32
-outline_color = Color(0.08763171, 0.17775533, 0.17777494, 1)
 
 [node name="Main" type="Node" unique_id=1391425956]
 script = ExtResource("1_lxy7q")
@@ -103,34 +82,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
 [node name="Goal" parent="." unique_id=860213988 instance=ExtResource("5_6aewd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
 
-[node name="PauseMenu" type="PanelContainer" parent="." unique_id=420641389]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -122.0
-offset_top = -69.0
-offset_right = 122.0
-offset_bottom = 95.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6aewd")
-
-[node name="VBox" type="VBoxContainer" parent="PauseMenu" unique_id=1590555721]
-layout_mode = 2
-alignment = 1
-
-[node name="Title" type="Label" parent="PauseMenu/VBox" unique_id=1593404909]
-layout_mode = 2
-size_flags_vertical = 6
-text = "Danger Dodger"
-label_settings = SubResource("LabelSettings_6aewd")
-
-[node name="PlayButton" type="Button" parent="PauseMenu/VBox" unique_id=1762163211]
-layout_mode = 2
-text = "Play"
-
-[node name="QuitButton" type="Button" parent="PauseMenu/VBox" unique_id=423557226]
-layout_mode = 2
-text = "Quit"
+[node name="PauseMenu" parent="." unique_id=1964178808 instance=ExtResource("6_u2i7p")]

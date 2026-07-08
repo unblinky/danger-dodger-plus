@@ -23,7 +23,7 @@ albedo_color = Color(0.5219679, 0.23040357, 0.29027018, 1)
 [node name="Animal" type="Area3D" unique_id=1927845697]
 script = ExtResource("1_yvsqr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1319934459]
+[node name="Collider" type="CollisionShape3D" parent="." unique_id=1319934459]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5196738, 0)
 shape = SubResource("BoxShape3D_fh211")
 
@@ -82,4 +82,4 @@ text = "Goals remaining: 10"
 
 [node name="LivesUI" type="Label" parent="UI/VBox" unique_id=916532860]
 layout_mode = 2
-text = "Lives: 3"
+text = "Lives: 0123456789"

@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dkrcw84mho1yp"]
+
+[ext_resource type="Script" uid="uid://bo0m5o8islhfu" path="res://PauseMenu/PauseMenu.gd" id="1_egqmv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6aewd"]
+content_margin_left = 20.0
+content_margin_top = 9.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.29967466, 0.66778356, 0.66767, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.13865176, 0.36753035, 0.3677084, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_6aewd"]
+font_size = 28
+font_color = Color(0.18039216, 0.3254902, 0.3254902, 1)
+outline_size = 32
+outline_color = Color(0.08763171, 0.17775533, 0.17777494, 1)
+
+[node name="PauseMenu" type="PanelContainer" unique_id=1964178808]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -69.0
+offset_right = 122.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6aewd")
+script = ExtResource("1_egqmv")
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=672339861]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="VBox" unique_id=1857426959]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Danger Dodger"
+label_settings = SubResource("LabelSettings_6aewd")
+
+[node name="PlayButton" type="Button" parent="VBox" unique_id=2063558750]
+layout_mode = 2
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="VBox" unique_id=1192013908]
+layout_mode = 2
+text = "Quit"
