@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Danger X-ing"
+config/name="Danger Dodger"
 run/main_scene="uid://cib786y4fr7cb"
 config/features=PackedStringArray("4.7")
 config/icon="res://Main/icon.png"

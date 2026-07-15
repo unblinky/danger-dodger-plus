@@ -25,10 +25,12 @@ class_name Animal ## The main class for the player input.
 
 @export var lives: int = 3 ## Bunny lives.
 
+
 var leap_distance: float = 1.0
 var weight: float = 1.0 # 0 - 1
 var weight_speed: float = 5.0 # per sec.
 
+var main: Main
 var spawning_point: Vector3
 var current_spot: Vector3
 var next_spot: Vector3
@@ -42,6 +44,7 @@ func _ready() -> void:
 	spawning_point = position
 	current_spot = position
 	next_spot = position
+	main = get_parent()
 	
 	update_lives(0)
 
@@ -96,17 +99,18 @@ func respawn():
 	graphics.hide()
 	next_spot = spawning_point
 	weight = 0.0
-	print("Killed. Respawning.")
-	pass
+	print("Rabbitting.")
+
 
 
 func on_entered(other_area: Area3D) -> void:
+	if other_area is Goal:
+		respawn()
+		other_area.set_occupied()
+		main.check_game_over()
+		print("Goal!!!")
+
 	if other_area is Vehicle:
+		print(lives)
 		update_lives(-1)
 		respawn()
-		print(lives)
-	
-	if other_area is Goal:
-		# DEBUG: Try moving the position?
-		respawn()
-		print("Goal!!!")
