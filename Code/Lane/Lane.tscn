@@ -15,6 +15,3 @@ script = ExtResource("1_ah24w")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.068404436, 0)
 material_override = SubResource("StandardMaterial3D_w71v0")
 mesh = SubResource("PlaneMesh_fh211")
-
-[node name="Node3D" type="Node3D" parent="." unique_id=14474007]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b3x2ya4csyglj" path="res://Animal/Animal.tscn" id="1_rwfof"]
 [ext_resource type="PackedScene" uid="uid://c4v0peqkg130j" path="res://Goal/Goal.tscn" id="2_5yycp"]
 [ext_resource type="PackedScene" uid="uid://berl535au27hs" path="res://Lane/Lane.tscn" id="3_7touw"]
-[ext_resource type="PackedScene" uid="uid://d10bdq3u7df63" path="res://Vehicle/Vehicle.tscn" id="4_3qy7e"]
+[ext_resource type="PackedScene" uid="uid://d10bdq3u7df63" path="res://Traffic/Vehicle/Vehicle.tscn" id="4_3qy7e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rwfof"]
 sky_top_color = Color(0.5019608, 0.49411765, 0.49411765, 1)
@@ -48,15 +48,15 @@ transform = Transform3D(0.909486, -0.3235424, 0.2610659, -2.1910337e-08, 0.62796
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7683716e-07, 15.737704)
 fov = 56.1
 
-[node name="Goals" type="Node3D" parent="." unique_id=171930494]
+[node name="GoalsNode" type="Node3D" parent="." unique_id=171930494]
 
-[node name="Goal0" parent="Goals" unique_id=860213988 instance=ExtResource("2_5yycp")]
+[node name="Goal0" parent="GoalsNode" unique_id=860213988 instance=ExtResource("2_5yycp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -9)
 
-[node name="Goal1" parent="Goals" unique_id=1194916322 instance=ExtResource("2_5yycp")]
+[node name="Goal1" parent="GoalsNode" unique_id=1194916322 instance=ExtResource("2_5yycp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -9)
 
-[node name="Goal2" parent="Goals" unique_id=780816918 instance=ExtResource("2_5yycp")]
+[node name="Goal2" parent="GoalsNode" unique_id=780816918 instance=ExtResource("2_5yycp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 
 [node name="Lane2" parent="." unique_id=882810251 instance=ExtResource("3_7touw")]

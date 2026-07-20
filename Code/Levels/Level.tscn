@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://d26k2kxe4mwal"]
+
+[ext_resource type="Script" uid="uid://d3d2r0u0p7bod" path="res://Levels/Level.gd" id="1_286st"]
+[ext_resource type="PackedScene" uid="uid://b3x2ya4csyglj" path="res://Animal/Animal.tscn" id="2_q1ycg"]
+[ext_resource type="PackedScene" uid="uid://c4v0peqkg130j" path="res://Goal/Goal.tscn" id="3_y3x56"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fysvr"]
+sky_top_color = Color(0.5019608, 0.49411765, 0.49411765, 1)
+sky_horizon_color = Color(0.71344006, 0.73190093, 0.70123476, 1)
+ground_bottom_color = Color(0.11873678, 0.20042369, 0.07775884, 1)
+ground_horizon_color = Color(0.71344006, 0.73190093, 0.70123476, 1)
+
+[sub_resource type="Sky" id="Sky_64f7r"]
+sky_material = SubResource("ProceduralSkyMaterial_fysvr")
+
+[sub_resource type="Environment" id="Environment_tsvly"]
+background_mode = 2
+sky = SubResource("Sky_64f7r")
+
+[node name="Level" type="Node3D" unique_id=581817278]
+script = ExtResource("1_286st")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=557159856]
+environment = SubResource("Environment_tsvly")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=182491780]
+transform = Transform3D(0.9184464, 0.2776097, -0.28176078, 0, 0.71233463, 0.70184004, 0.39554554, -0.6446024, 0.65424114, -6.2955065, 10.7759495, 14.618002)
+shadow_enabled = true
+
+[node name="Animal" parent="." unique_id=1927845697 instance=ExtResource("2_q1ycg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+
+[node name="Rig" type="Node3D" parent="Animal" unique_id=395680066]
+transform = Transform3D(0.909486, -0.3235424, 0.2610659, -2.1910337e-08, 0.6279631, 0.77824336, -0.4157344, -0.70780146, 0.57112384, 0, 0.10647297, -1.2470665)
+
+[node name="Camera3D" type="Camera3D" parent="Animal/Rig" unique_id=2080226698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7683716e-07, 15.737704)
+fov = 56.1
+
+[node name="GoalsNode" type="Node3D" parent="." unique_id=45067311]
+
+[node name="Goal0" parent="GoalsNode" unique_id=860213988 instance=ExtResource("3_y3x56")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -9)

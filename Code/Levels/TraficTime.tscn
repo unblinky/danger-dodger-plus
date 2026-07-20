@@ -3,8 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://c4v0peqkg130j" path="res://Goal/Goal.tscn" id="1_0oysf"]
 [ext_resource type="PackedScene" uid="uid://b3x2ya4csyglj" path="res://Animal/Animal.tscn" id="1_cebxe"]
 [ext_resource type="Script" uid="uid://d3d2r0u0p7bod" path="res://Levels/Level.gd" id="1_fysvr"]
+[ext_resource type="PackedScene" uid="uid://cwqeu7k1fculu" path="res://Waterway/Waterway.tscn" id="2_64f7r"]
 [ext_resource type="PackedScene" uid="uid://berl535au27hs" path="res://Lane/Lane.tscn" id="2_cebxe"]
-[ext_resource type="PackedScene" uid="uid://d10bdq3u7df63" path="res://Vehicle/Vehicle.tscn" id="3_fysvr"]
+[ext_resource type="PackedScene" uid="uid://d10bdq3u7df63" path="res://Traffic/Vehicle/Vehicle.tscn" id="3_fysvr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fysvr"]
 sky_top_color = Color(0.5019608, 0.49411765, 0.49411765, 1)
@@ -31,6 +32,9 @@ radius = 0.069
 [node name="TraficTime" type="Node3D" unique_id=581817278]
 script = ExtResource("1_fysvr")
 
+[node name="Waterway" parent="." unique_id=502258408 instance=ExtResource("2_64f7r")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=557159856]
 environment = SubResource("Environment_tsvly")
 
@@ -39,7 +43,7 @@ transform = Transform3D(0.9184464, 0.2776097, -0.28176078, 0, 0.71233463, 0.7018
 shadow_enabled = true
 
 [node name="Animal" parent="." unique_id=1927845697 instance=ExtResource("1_cebxe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 
 [node name="Rig" type="Node3D" parent="Animal" unique_id=395680066]
 transform = Transform3D(0.909486, -0.3235424, 0.2610659, -2.1910337e-08, 0.6279631, 0.77824336, -0.4157344, -0.70780146, 0.57112384, 0, 0.10647297, -1.2470665)
@@ -48,22 +52,13 @@ transform = Transform3D(0.909486, -0.3235424, 0.2610659, -2.1910337e-08, 0.62796
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7683716e-07, 15.737704)
 fov = 56.1
 
-[node name="Goals" type="Node3D" parent="." unique_id=45067311]
+[node name="GoalsNode" type="Node3D" parent="." unique_id=45067311]
 
-[node name="Goal0" parent="Goals" unique_id=860213988 instance=ExtResource("1_0oysf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -9)
-
-[node name="Goal1" parent="Goals" unique_id=950229669 instance=ExtResource("1_0oysf")]
+[node name="Goal1" parent="GoalsNode" unique_id=950229669 instance=ExtResource("1_0oysf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -9)
 
-[node name="Goal2" parent="Goals" unique_id=442853870 instance=ExtResource("1_0oysf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
-
-[node name="Goal3" parent="Goals" unique_id=1295680527 instance=ExtResource("1_0oysf")]
+[node name="Goal3" parent="GoalsNode" unique_id=1295680527 instance=ExtResource("1_0oysf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -9)
-
-[node name="Goal4" parent="Goals" unique_id=1013706762 instance=ExtResource("1_0oysf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -9)
 
 [node name="Lane2" parent="." unique_id=882810251 instance=ExtResource("2_cebxe")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -3)
