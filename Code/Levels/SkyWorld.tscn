@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://qjr6jp64qq8p"]
+
+[ext_resource type="Script" uid="uid://d3d2r0u0p7bod" path="res://Levels/Level.gd" id="1_g4bax"]
+[ext_resource type="PackedScene" uid="uid://b3x2ya4csyglj" path="res://Animal/Animal.tscn" id="2_e4jwm"]
+[ext_resource type="PackedScene" uid="uid://c4v0peqkg130j" path="res://Goal/Goal.tscn" id="3_612c4"]
+[ext_resource type="PackedScene" uid="uid://berl535au27hs" path="res://Lane/Lane.tscn" id="4_s5kmm"]
+[ext_resource type="PackedScene" uid="uid://d10bdq3u7df63" path="res://Vehicle/Vehicle.tscn" id="5_u6y4n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eh51w"]
+albedo_color = Color(0.05680009, 0.23091522, 0.1386115, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_op42x"]
+size = Vector2(50, 50)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_pe13q"]
+radius = 0.069
+
+[node name="SkyWorld" type="Node3D" unique_id=377872244]
+script = ExtResource("1_g4bax")
+
+[node name="Animal" parent="." unique_id=1927845697 instance=ExtResource("2_e4jwm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+
+[node name="Rig" type="Node3D" parent="Animal" unique_id=2084468769]
+transform = Transform3D(0.909486, -0.3235424, 0.2610659, -2.1910337e-08, 0.6279631, 0.77824336, -0.4157344, -0.70780146, 0.57112384, 0, 0.10647297, -1.2470665)
+
+[node name="Camera3D" type="Camera3D" parent="Animal/Rig" unique_id=42588725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7683716e-07, 15.737704)
+fov = 56.1
+
+[node name="Goals" type="Node3D" parent="." unique_id=515427178]
+
+[node name="Goal1" parent="Goals" unique_id=860213988 instance=ExtResource("3_612c4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -9)
+
+[node name="Lane2" parent="." unique_id=882810251 instance=ExtResource("4_s5kmm")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -3)
+
+[node name="Vehicle" parent="Lane2" unique_id=933503642 instance=ExtResource("5_u6y4n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=143109361]
+material_override = SubResource("StandardMaterial3D_eh51w")
+mesh = SubResource("PlaneMesh_op42x")
+metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=930559739]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
+mesh = SubResource("CapsuleMesh_pe13q")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Ground" unique_id=869456294]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -10)
+mesh = SubResource("CapsuleMesh_pe13q")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Ground" unique_id=1216359641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
+mesh = SubResource("CapsuleMesh_pe13q")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Ground" unique_id=574420544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -10)
+mesh = SubResource("CapsuleMesh_pe13q")
+skeleton = NodePath("../..")

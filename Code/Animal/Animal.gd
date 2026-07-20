@@ -4,6 +4,8 @@ class_name Animal ## The main class for the player input.
 # TODO:
 # [ ] Is game over?
 #   [ ] What should happen?
+#   [ ] Why does movment glitch?
+#   [ ] How to get a plugin? Where is my TODO Manager?
 
 
 # [x] Subtract life.
@@ -24,13 +26,13 @@ class_name Animal ## The main class for the player input.
 @onready var lives_ui: Label = $UI/VBox/LivesUI
 
 @export var lives: int = 3 ## Bunny lives.
+@export var level: Level
 
 
 var leap_distance: float = 1.0
 var weight: float = 1.0 # 0 - 1
 var weight_speed: float = 5.0 # per sec.
 
-var main: Main
 var spawning_point: Vector3
 var current_spot: Vector3
 var next_spot: Vector3
@@ -44,8 +46,8 @@ func _ready() -> void:
 	spawning_point = position
 	current_spot = position
 	next_spot = position
-	main = get_parent()
 	
+	level = get_parent()
 	update_lives(0)
 
 
@@ -107,7 +109,7 @@ func on_entered(other_area: Area3D) -> void:
 	if other_area is Goal:
 		respawn()
 		other_area.set_occupied()
-		main.check_game_over()
+		level.check_level_over()
 		print("Goal!!!")
 
 	if other_area is Vehicle:
