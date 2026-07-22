@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://berl535au27hs"]
 
-[ext_resource type="Script" uid="uid://bj8g6bnqfxidb" path="res://Lane/Lane.gd" id="1_ah24w"]
+[ext_resource type="Script" uid="uid://bvynub6uj26s2" path="res://Lane/Road/Road.gd" id="1_r8ekw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w71v0"]
 albedo_color = Color(0.099868216, 0.099868216, 0.099868216, 1)
@@ -8,8 +8,8 @@ albedo_color = Color(0.099868216, 0.099868216, 0.099868216, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_fh211"]
 size = Vector2(0.9, 20)
 
-[node name="Lane" type="Node3D" unique_id=882810251]
-script = ExtResource("1_ah24w")
+[node name="Road" type="Area3D" unique_id=625178510]
+script = ExtResource("1_r8ekw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1315885468]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.068404436, 0)

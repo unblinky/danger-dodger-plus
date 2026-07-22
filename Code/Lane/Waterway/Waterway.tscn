@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwqeu7k1fculu"]
 
-[ext_resource type="Script" uid="uid://cwqtxrrs1h1rr" path="res://Waterway/Waterway.gd" id="1_j7ye3"]
+[ext_resource type="Script" uid="uid://cwqtxrrs1h1rr" path="res://Lane/Waterway/Waterway.gd" id="1_j7ye3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7ye3"]
 albedo_color = Color(0.1212933, 0.14170316, 0.40198994, 1)
@@ -9,7 +9,7 @@ albedo_color = Color(0.1212933, 0.14170316, 0.40198994, 1)
 size = Vector2(0.9, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fh211"]
-size = Vector3(0.9, 0.2, 20)
+size = Vector3(0.17089844, 0.2, 20)
 
 [node name="Waterway" type="Area3D" unique_id=502258408]
 script = ExtResource("1_j7ye3")

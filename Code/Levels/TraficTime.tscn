@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://c4v0peqkg130j" path="res://Goal/Goal.tscn" id="1_0oysf"]
 [ext_resource type="PackedScene" uid="uid://b3x2ya4csyglj" path="res://Animal/Animal.tscn" id="1_cebxe"]
 [ext_resource type="Script" uid="uid://d3d2r0u0p7bod" path="res://Levels/Level.gd" id="1_fysvr"]
-[ext_resource type="PackedScene" uid="uid://cwqeu7k1fculu" path="res://Waterway/Waterway.tscn" id="2_64f7r"]
-[ext_resource type="PackedScene" uid="uid://berl535au27hs" path="res://Lane/Lane.tscn" id="2_cebxe"]
+[ext_resource type="PackedScene" uid="uid://cwqeu7k1fculu" path="res://Lane/Waterway/Waterway.tscn" id="2_64f7r"]
+[ext_resource type="PackedScene" uid="uid://berl535au27hs" path="res://Lane/Road/Road.tscn" id="2_cebxe"]
 [ext_resource type="PackedScene" uid="uid://d10bdq3u7df63" path="res://Traffic/Vehicle/Vehicle.tscn" id="3_fysvr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fysvr"]

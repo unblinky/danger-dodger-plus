@@ -8,7 +8,7 @@ const SKY_WORLD = preload("res://Levels/SkyWorld.tscn")
 
 @onready var pause_menu: PauseMenu = $PauseMenu
 # 	 								0			1				2
-var levels: Array[PackedScene] = [TRAFIC_TIME, WATER_WORLD, SKY_WORLD]
+var levels: Array[PackedScene] = [WATER_WORLD, TRAFIC_TIME, SKY_WORLD]
 var current_level = -1
 var level: Level = null
 
