@@ -1,14 +1,19 @@
 extends Area3D
 class_name Animal ## The main class for the player input.
 
+
+const ANIMAL = preload("res://Animal/Animal.tscn")
+const LIFE = preload("res://Animal/assets/life.tscn")
+
+
 # NOTE: Requirements.
 #  - Must be child of a Level.
 
 # TODO:
-# [ ] Is game over?
-#   [ ] What should happen?
-#   [ ] Why does movment glitch?
-#   [ ] How to get a plugin? Where is my TODO Manager?
+# [x] Is game over?
+#   [x] What should happen?
+# [ ] Why does movement glitch?
+# [ ] How to get a plugin? Where is my TODO Manager?
 
 
 # [x] Subtract life.
@@ -27,9 +32,10 @@ class_name Animal ## The main class for the player input.
 @onready var collider: CollisionShape3D = $Collider
 @onready var graphics: Node3D = $Graphics
 @onready var lives_ui: HBoxContainer = $UI/VBox/LivesUI
+@onready var goals_ui: Label = $UI/VBox/GoalsUI
 
 
-@export var lives: int = 3 ## Bunny lives.
+@export var lives: int = 1 ## Bunny lives.
 var level: Level
 
 #var is_riding: bool = false
@@ -55,6 +61,7 @@ func _ready() -> void:
 	
 	level = get_parent()
 	update_lives(0)
+	level.goals_remaining()
 
 
 func _process(delta: float) -> void:
@@ -114,8 +121,17 @@ func _process(delta: float) -> void:
 
 func update_lives(delta_lives: int):
 	lives += delta_lives
-	# TODO: Hook back up to UI.
-	#lives_ui.text = "Bunny's lives: " + str(lives)
+	if lives < 0:
+		level.main.pause_menu.game_over()
+	
+	## Delete all children.
+	for child_node in lives_ui.get_children():
+		child_node.queue_free()
+	
+	# Spawn all the lives.
+	for l in lives:
+		var life = LIFE.instantiate()
+		lives_ui.add_child(life)
 
 
 func respawn():
@@ -128,11 +144,15 @@ func respawn():
 	print("Rabbitting.")
 
 
+func update_goals():
+	var remainder = level.check_level_over()
+	goals_ui.text = "Goals remaining: " + str(remainder)
+
 func on_entered(other_area: Area3D) -> void:
 	if other_area is Goal:
 		respawn()
 		other_area.set_occupied()
-		level.check_level_over()
+		update_goals()
 		print("Goal!!!")
 
 	if other_area is Vehicle:

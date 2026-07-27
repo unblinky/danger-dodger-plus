@@ -54,6 +54,10 @@ label_settings = SubResource("LabelSettings_6aewd")
 layout_mode = 2
 text = "Play"
 
+[node name="ContinueButton" type="Button" parent="VBox" unique_id=47024229]
+layout_mode = 2
+text = "Continue"
+
 [node name="QuitButton" type="Button" parent="VBox" unique_id=1192013908]
 layout_mode = 2
 text = "Quit"

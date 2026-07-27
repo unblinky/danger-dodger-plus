@@ -14,14 +14,25 @@ func _ready() -> void:
 	goals = goals_node.get_children()
 
 
-func check_level_over():
+func goals_remaining() -> int:
+	var occupied_count = 0
+	for goal: Goal in goals:
+		if goal.occupied:
+			occupied_count += 1
+	return goals.size() - occupied_count
+
+
+func check_level_over() -> int:
 	print("Checking level over.")
+
+	
 	for goal in goals:
 		if not goal.occupied:
 			print("Level not over.")
-			return
+			return goals_remaining()
 	print("Level Success")
 	main.next_level()
+	return 0
 
 
 

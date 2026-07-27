@@ -43,7 +43,7 @@ transform = Transform3D(0.9184464, 0.2776097, -0.28176078, 0, 0.71233463, 0.7018
 shadow_enabled = true
 
 [node name="Animal" parent="." unique_id=1927845697 instance=ExtResource("1_cebxe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 
 [node name="Rig" type="Node3D" parent="Animal" unique_id=395680066]
 transform = Transform3D(0.909486, -0.3235424, 0.2610659, -2.1910337e-08, 0.6279631, 0.77824336, -0.4157344, -0.70780146, 0.57112384, 0, 0.10647297, -1.2470665)
