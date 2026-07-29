@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://d26k2kxe4mwal"]
 
-[ext_resource type="Script" uid="uid://d3d2r0u0p7bod" path="res://Levels/Level.gd" id="1_286st"]
-[ext_resource type="PackedScene" uid="uid://b3x2ya4csyglj" path="res://Animal/Animal.tscn" id="2_q1ycg"]
+[ext_resource type="Script" uid="uid://d3d2r0u0p7bod" path="res://Level/Level.gd" id="1_286st"]
 [ext_resource type="PackedScene" uid="uid://c4v0peqkg130j" path="res://Goal/Goal.tscn" id="3_y3x56"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fysvr"]
@@ -17,6 +16,11 @@ sky_material = SubResource("ProceduralSkyMaterial_fysvr")
 background_mode = 2
 sky = SubResource("Sky_64f7r")
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_r3cbp"]
+top_radius = 0.318
+bottom_radius = 0.0
+height = 0.98535156
+
 [node name="Level" type="Node3D" unique_id=581817278]
 script = ExtResource("1_286st")
 
@@ -27,17 +31,15 @@ environment = SubResource("Environment_tsvly")
 transform = Transform3D(0.9184464, 0.2776097, -0.28176078, 0, 0.71233463, 0.70184004, 0.39554554, -0.6446024, 0.65424114, -6.2955065, 10.7759495, 14.618002)
 shadow_enabled = true
 
-[node name="Animal" parent="." unique_id=1927845697 instance=ExtResource("2_q1ycg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
-
-[node name="Rig" type="Node3D" parent="Animal" unique_id=395680066]
-transform = Transform3D(0.909486, -0.3235424, 0.2610659, -2.1910337e-08, 0.6279631, 0.77824336, -0.4157344, -0.70780146, 0.57112384, 0, 0.10647297, -1.2470665)
-
-[node name="Camera3D" type="Camera3D" parent="Animal/Rig" unique_id=2080226698]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7683716e-07, 15.737704)
-fov = 56.1
-
 [node name="GoalsNode" type="Node3D" parent="." unique_id=45067311]
 
 [node name="Goal0" parent="GoalsNode" unique_id=860213988 instance=ExtResource("3_y3x56")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -9)
+
+[node name="SpawningPoint" type="Node3D" parent="." unique_id=1575290061]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpawningPoint" unique_id=1263439944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8743682, 0)
+mesh = SubResource("CylinderMesh_r3cbp")

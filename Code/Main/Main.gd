@@ -1,26 +1,37 @@
 extends Node
 class_name Main
 
+# Player file.
+const ANIMAL = preload("res://Animal/Animal.tscn")
+
 # Level files.
-const TRAFIC_TIME = preload("res://Levels/TraficTime.tscn")
-const WATER_WORLD = preload("res://Levels/WaterWorld.tscn")
-const SKY_WORLD = preload("res://Levels/SkyWorld.tscn")
+const SPLASH_SCREEN = preload("res://Level/SplashScreen/SplashScreen.tscn")
+const SKY_WORLD = preload("res://Level/SkyWorld/SkyWorld.tscn")
+const TRAFIC_TIME = preload("res://Level/TraficTime/TraficTime.tscn")
+const WATER_WORLD = preload("res://Level/WaterWorld/WaterWorld.tscn")
+
 
 @onready var pause_menu: PauseMenu = $PauseMenu
 
-
+var animal: Animal
+# TODO: Make a MAIN_SPLASH_LEVEL.
 var levels: Array[PackedScene] = [TRAFIC_TIME, WATER_WORLD, SKY_WORLD]
 var current_level = -1
 var level: Level = null
 
-func _ready() -> void:
-	restart()
 
 func restart():
+	if animal:
+		animal.queue_free()
+	animal = ANIMAL.instantiate()
+	add_child(animal)
+	
 	current_level = -1
 	next_level()
 
+
 func next_level():
+	# Spawn the next level.
 	if level:
 		level.queue_free()
 	
@@ -31,3 +42,8 @@ func next_level():
 	level = levels[current_level].instantiate()
 	level.main = self
 	add_child(level)
+	
+	# Move animal.
+	animal.level = level
+	animal.spawning_point = level.spawning_point.position
+	animal.position = level.spawning_point.position

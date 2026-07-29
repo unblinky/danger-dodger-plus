@@ -49,6 +49,7 @@ layout_mode = 2
 size_flags_vertical = 6
 text = "Danger Dodger"
 label_settings = SubResource("LabelSettings_6aewd")
+horizontal_alignment = 1
 
 [node name="PlayButton" type="Button" parent="VBox" unique_id=2063558750]
 layout_mode = 2

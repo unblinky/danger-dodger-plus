@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://qjr6jp64qq8p"]
 
-[ext_resource type="Script" uid="uid://d3d2r0u0p7bod" path="res://Levels/Level.gd" id="1_g4bax"]
-[ext_resource type="PackedScene" uid="uid://b3x2ya4csyglj" path="res://Animal/Animal.tscn" id="2_e4jwm"]
+[ext_resource type="Script" uid="uid://d3d2r0u0p7bod" path="res://Level/Level.gd" id="1_g4bax"]
 [ext_resource type="PackedScene" uid="uid://c4v0peqkg130j" path="res://Goal/Goal.tscn" id="3_612c4"]
 [ext_resource type="PackedScene" uid="uid://berl535au27hs" path="res://Lane/Road/Road.tscn" id="4_s5kmm"]
 [ext_resource type="PackedScene" uid="uid://d10bdq3u7df63" path="res://Traffic/Vehicle/Vehicle.tscn" id="5_u6y4n"]
@@ -18,6 +17,11 @@ sky_material = SubResource("ProceduralSkyMaterial_g4bax")
 [sub_resource type="Environment" id="Environment_612c4"]
 background_mode = 2
 sky = SubResource("Sky_e4jwm")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wjah1"]
+top_radius = 0.318
+bottom_radius = 0.0
+height = 0.98535156
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eh51w"]
 albedo_color = Color(0.05680009, 0.23091522, 0.1386115, 1)
@@ -38,15 +42,13 @@ environment = SubResource("Environment_612c4")
 transform = Transform3D(-0.9997426, -0.019647786, 0.011343653, 0, 0.49999997, 0.86602545, -0.022687308, 0.8658026, -0.49987128, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Animal" parent="." unique_id=1927845697 instance=ExtResource("2_e4jwm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+[node name="SpawningPoint" type="Node3D" parent="." unique_id=1548283734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 1)
+metadata/_edit_group_ = true
 
-[node name="Rig" type="Node3D" parent="Animal" unique_id=2084468769]
-transform = Transform3D(0.909486, -0.3235424, 0.2610659, -2.1910337e-08, 0.6279631, 0.77824336, -0.4157344, -0.70780146, 0.57112384, 0, 0.10647297, -1.2470665)
-
-[node name="Camera3D" type="Camera3D" parent="Animal/Rig" unique_id=42588725]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7683716e-07, 15.737704)
-fov = 56.1
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpawningPoint" unique_id=1209581527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8743682, 0)
+mesh = SubResource("CylinderMesh_wjah1")
 
 [node name="GoalsNode" type="Node3D" parent="." unique_id=515427178]
 

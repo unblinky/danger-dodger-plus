@@ -24,6 +24,13 @@ albedo_color = Color(0.5219679, 0.23040357, 0.29027018, 1)
 [node name="Animal" type="Area3D" unique_id=1927845697]
 script = ExtResource("1_yvsqr")
 
+[node name="Rig" type="Node3D" parent="." unique_id=1948816956]
+transform = Transform3D(0.909486, -0.3235424, 0.2610659, -2.1910337e-08, 0.6279631, 0.77824336, -0.4157344, -0.70780146, 0.57112384, 0, 0.10647297, -1.2470665)
+
+[node name="Camera3D" type="Camera3D" parent="Rig" unique_id=1774669038]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7683716e-07, 15.737704)
+fov = 56.1
+
 [node name="Collider" type="CollisionShape3D" parent="." unique_id=1319934459]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5196738, 0)
 visible = false

@@ -11,10 +11,11 @@ var main: Main
 
 func _ready() -> void:
 	main = get_parent()
-	hide()
 	play_button.pressed.connect(on_play_button_pressed)
 	continue_button.pressed.connect(on_continue_button_pressed)
 	quit_button.pressed.connect(on_quit_button_pressed)
+	continue_button.hide()
+	show()
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
@@ -43,7 +44,6 @@ func game_over():
 	show()
 
 func on_play_button_pressed():
-	get_tree().paused = false
 	main.restart()
 	hide()
 

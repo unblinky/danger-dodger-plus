@@ -35,7 +35,7 @@ const LIFE = preload("res://Animal/assets/life.tscn")
 @onready var goals_ui: Label = $UI/VBox/GoalsUI
 
 
-@export var lives: int = 1 ## Bunny lives.
+@export var lives: int = 3 ## Bunny lives.
 var level: Level
 
 #var is_riding: bool = false
@@ -59,9 +59,9 @@ func _ready() -> void:
 	current_spot = position
 	next_spot = position
 	
-	level = get_parent()
+	#level = get_parent() # Handled at game spawn.
 	update_lives(0)
-	level.goals_remaining()
+	#level.goals_remaining()
 
 
 func _process(delta: float) -> void:
