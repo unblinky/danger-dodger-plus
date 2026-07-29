@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://d3d2r0u0p7bod" path="res://Level/Level.gd" id="1_fysvr"]
 [ext_resource type="PackedScene" uid="uid://cwqeu7k1fculu" path="res://Lane/Waterway/Waterway.tscn" id="2_64f7r"]
 [ext_resource type="PackedScene" uid="uid://berl535au27hs" path="res://Lane/Road/Road.tscn" id="2_cebxe"]
+[ext_resource type="PackedScene" uid="uid://bcixbjm4at5tw" path="res://Level/assets/SpawningPoint.tscn" id="2_nq7qp"]
 [ext_resource type="PackedScene" uid="uid://d10bdq3u7df63" path="res://Traffic/Vehicle/Vehicle.tscn" id="3_fysvr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fysvr"]
@@ -28,13 +29,11 @@ size = Vector2(50, 50)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fysvr"]
 radius = 0.069
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_kxlnh"]
-top_radius = 0.318
-bottom_radius = 0.0
-height = 0.98535156
-
 [node name="TraficTime" type="Node3D" unique_id=581817278]
 script = ExtResource("1_fysvr")
+
+[node name="SpawningPoint" parent="." unique_id=409978906 instance=ExtResource("2_nq7qp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 
 [node name="Waterway" parent="." unique_id=502258408 instance=ExtResource("2_64f7r")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.808253e-07, 0, -11)
@@ -84,11 +83,3 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -10)
 mesh = SubResource("CapsuleMesh_fysvr")
 skeleton = NodePath("../..")
-
-[node name="SpawningPoint" type="Node3D" parent="." unique_id=406875020]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SpawningPoint" unique_id=1062518968]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8743682, 0)
-mesh = SubResource("CylinderMesh_kxlnh")

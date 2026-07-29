@@ -2,15 +2,11 @@
 
 [ext_resource type="Script" uid="uid://d3d2r0u0p7bod" path="res://Level/Level.gd" id="1_lqnjl"]
 [ext_resource type="PackedScene" uid="uid://cwqeu7k1fculu" path="res://Lane/Waterway/Waterway.tscn" id="2_3icd7"]
+[ext_resource type="PackedScene" uid="uid://bcixbjm4at5tw" path="res://Level/assets/SpawningPoint.tscn" id="2_lqnjl"]
 [ext_resource type="PackedScene" uid="uid://ds37jvsss8s4s" path="res://Traffic/Vessel/Vessel.tscn" id="3_kujx4"]
 [ext_resource type="PackedScene" uid="uid://c4v0peqkg130j" path="res://Goal/Goal.tscn" id="5_qxpf5"]
 [ext_resource type="PackedScene" uid="uid://berl535au27hs" path="res://Lane/Road/Road.tscn" id="6_kdmkb"]
 [ext_resource type="PackedScene" uid="uid://d10bdq3u7df63" path="res://Traffic/Vehicle/Vehicle.tscn" id="7_b2bsv"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_fh211"]
-top_radius = 0.318
-bottom_radius = 0.0
-height = 0.98535156
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rwfof"]
 sky_top_color = Color(0.5019608, 0.49411765, 0.49411765, 1)
@@ -37,12 +33,8 @@ radius = 0.069
 [node name="WaterWorld" type="Node3D" unique_id=1797698070]
 script = ExtResource("1_lqnjl")
 
-[node name="SpawningPoint" type="Node3D" parent="." unique_id=156514945]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -1)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SpawningPoint" unique_id=1997993204]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8743682, 0)
-mesh = SubResource("CylinderMesh_fh211")
+[node name="SpawningPoint" parent="." unique_id=409978906 instance=ExtResource("2_lqnjl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1289574818]
 environment = SubResource("Environment_7touw")

@@ -36,7 +36,12 @@ const LIFE = preload("res://Animal/assets/life.tscn")
 
 
 @export var lives: int = 3 ## Bunny lives.
+
+
+var main: Main
 var level: Level
+
+
 
 #var is_riding: bool = false
 var riding: Vessel = null # Refrences / pointers.
@@ -139,7 +144,7 @@ func respawn():
 	collider.set_deferred("disabled", true)
 	
 	graphics.hide()
-	next_spot = spawning_point
+	next_spot = level.spawning_point.position
 	weight = 0.0
 	print("Rabbitting.")
 
@@ -147,6 +152,8 @@ func respawn():
 func update_goals():
 	var remainder = level.check_level_over()
 	goals_ui.text = "Goals remaining: " + str(remainder)
+	if remainder <= 0:
+		main.next_level()
 
 func on_entered(other_area: Area3D) -> void:
 	if other_area is Goal:

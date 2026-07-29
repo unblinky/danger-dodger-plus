@@ -14,6 +14,7 @@ const WATER_WORLD = preload("res://Level/WaterWorld/WaterWorld.tscn")
 @onready var pause_menu: PauseMenu = $PauseMenu
 
 var animal: Animal
+
 # TODO: Make a MAIN_SPLASH_LEVEL.
 var levels: Array[PackedScene] = [TRAFIC_TIME, WATER_WORLD, SKY_WORLD]
 var current_level = -1
@@ -24,6 +25,7 @@ func restart():
 	if animal:
 		animal.queue_free()
 	animal = ANIMAL.instantiate()
+	animal.main = self
 	add_child(animal)
 	
 	current_level = -1
@@ -46,4 +48,5 @@ func next_level():
 	# Move animal.
 	animal.level = level
 	animal.spawning_point = level.spawning_point.position
-	animal.position = level.spawning_point.position
+	animal.respawn()
+	animal.update_goals()

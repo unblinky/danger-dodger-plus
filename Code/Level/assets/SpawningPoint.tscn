@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bcixbjm4at5tw"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wjah1"]
+top_radius = 0.0
+bottom_radius = 0.104
+height = 2.4926758
+
+[node name="SpawningPoint" type="Node3D" unique_id=409978906]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1931461030]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1611164, 0)
+mesh = SubResource("CylinderMesh_wjah1")

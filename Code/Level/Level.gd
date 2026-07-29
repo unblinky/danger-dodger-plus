@@ -25,14 +25,12 @@ func goals_remaining() -> int:
 
 func check_level_over() -> int:
 	print("Checking level over.")
-
-	
 	for goal in goals:
 		if not goal.occupied:
 			print("Level not over.")
 			return goals_remaining()
 	print("Level Success")
-	main.next_level()
+	#main.next_level()
 	return 0
 
 
