@@ -72,54 +72,60 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if weight >= 1.0:
 		if Input.is_action_just_pressed("move_left"):
+			current_spot = position
 			next_spot = current_spot + Vector3.LEFT
 			weight = 0.0
 			graphics.rotation_degrees.y = 90.0
 		
 		if Input.is_action_just_pressed("move_right"):
+			current_spot = position
 			next_spot = current_spot + Vector3.RIGHT
 			weight = 0.0
 			graphics.rotation_degrees.y = -90.0
 		
 		if Input.is_action_just_pressed("move_up"):
-			graphics.rotation_degrees.y = 0.0
+			riding = null
+			
+			current_spot = position
+			next_spot = (current_spot + Vector3.FORWARD).round()
 			weight = 0.0
-			if riding:
-				current_spot = riding.global_position
-				next_spot = (current_spot + Vector3.FORWARD).round()
-				riding = null
-			else:
-				next_spot = current_spot + Vector3.FORWARD
+			
+			graphics.rotation_degrees.y = 0.0
 		
 		if Input.is_action_just_pressed("move_down"):
-			graphics.rotation_degrees.y = 180.0
+			riding = null
+			
+			current_spot = position
+			next_spot = (current_spot + Vector3.BACK).round()
 			weight = 0.0
-			if riding:
-				current_spot = riding.global_position
-				next_spot = (current_spot + Vector3.BACK).round()
-				riding = null
-			else:
-				next_spot = current_spot + Vector3.BACK
+			
+			graphics.rotation_degrees.y = 0.0
 	
 	## Tweening.
 	if weight < 1.0:
+		## Update the weight.
 		weight += weight_speed * delta
+		
+		## Lerp the position.
+		position = lerp(current_spot, next_spot, weight)
+	else:
 		# Did we overrun the [0.0 - 1.0] clamp.
-		if weight > 1.0:
-			weight = 1.0
-			current_spot = next_spot
+		weight = 1.0
+		current_spot = next_spot
+		graphics.show()
+		collider.set_deferred("disabled", false)
 	
 	# TODO: Is it the lerp that retriggers collision detection?
 	## Always lerping. Use next_spot to move.
 	
-	## End of the rabbiting.
-	# FIXME: Jittery control bug?
-	if current_spot == spawning_point:
-		graphics.show()
-		collider.disabled = false
-	else:
-		position = lerp(current_spot, next_spot, weight)
-	
+	### End of the rabbiting.
+	## FIXME: Jittery control bug?
+	#if current_spot == spawning_point:
+		#graphics.show()
+		#collider.disabled = false
+	#else:
+		#position = lerp(current_spot, next_spot, weight)
+	#
 	if riding:
 		position = riding.global_position
 
