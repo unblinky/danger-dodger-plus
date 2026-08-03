@@ -1,8 +1,6 @@
 extends Area3D
 class_name Animal ## The main class for the player input.
 
-
-const ANIMAL = preload("res://Animal/Animal.tscn")
 const LIFE = preload("res://Animal/assets/life.tscn")
 
 
@@ -42,7 +40,6 @@ var main: Main
 var level: Level
 
 
-
 #var is_riding: bool = false
 var riding: Vessel = null # Refrences / pointers.
 
@@ -58,67 +55,53 @@ var next_spot: Vector3
 func _ready() -> void:
 	# Signal hook.
 	area_entered.connect(on_entered)
-	
-	# TODO: R&D why isn't this offset? Where are we clamping?
-	spawning_point = position
-	current_spot = position
-	next_spot = position
-	
-	#level = get_parent() # Handled at game spawn.
 	update_lives(0)
-	#level.goals_remaining()
 
 
 func _process(delta: float) -> void:
 	if weight >= 1.0:
 		if Input.is_action_just_pressed("move_left"):
+			current_spot = position
 			next_spot = current_spot + Vector3.LEFT
 			weight = 0.0
+			
 			graphics.rotation_degrees.y = 90.0
 		
 		if Input.is_action_just_pressed("move_right"):
+			current_spot = position
 			next_spot = current_spot + Vector3.RIGHT
 			weight = 0.0
+			
 			graphics.rotation_degrees.y = -90.0
 		
 		if Input.is_action_just_pressed("move_up"):
+			riding = null
+			
+			current_spot = position
+			next_spot = (current_spot + Vector3.FORWARD).round()
+			weight = 0.0
+			
 			graphics.rotation_degrees.y = 0.0
-			weight = 0.0
-			if riding:
-				current_spot = riding.global_position
-				next_spot = (current_spot + Vector3.FORWARD).round()
-				riding = null
-			else:
-				next_spot = current_spot + Vector3.FORWARD
-		
+			
 		if Input.is_action_just_pressed("move_down"):
-			graphics.rotation_degrees.y = 180.0
+			riding = null
+			
+			current_spot = position
+			next_spot = (current_spot + Vector3.BACK).round()
 			weight = 0.0
-			if riding:
-				current_spot = riding.global_position
-				next_spot = (current_spot + Vector3.BACK).round()
-				riding = null
-			else:
-				next_spot = current_spot + Vector3.BACK
+			
+			graphics.rotation_degrees.y = 180.0
 	
 	## Tweening.
 	if weight < 1.0:
 		weight += weight_speed * delta
-		# Did we overrun the [0.0 - 1.0] clamp.
-		if weight > 1.0:
-			weight = 1.0
-			current_spot = next_spot
-	
-	# TODO: Is it the lerp that retriggers collision detection?
-	## Always lerping. Use next_spot to move.
-	
-	## End of the rabbiting.
-	# FIXME: Jittery control bug?
-	if current_spot == spawning_point:
-		graphics.show()
-		collider.disabled = false
-	else:
 		position = lerp(current_spot, next_spot, weight)
+	else:
+		weight = 1.0
+		current_spot = next_spot
+		collider.disabled = false
+		graphics.show()
+	
 	
 	if riding:
 		position = riding.global_position
@@ -139,8 +122,12 @@ func update_lives(delta_lives: int):
 		lives_ui.add_child(life)
 
 
+func next_level():
+	current_spot = level.spawning_point.position
+	respawn()
+
+
 func respawn():
-	# collider.disabled = true # Can't run while...
 	collider.set_deferred("disabled", true)
 	
 	graphics.hide()

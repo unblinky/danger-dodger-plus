@@ -48,5 +48,6 @@ func next_level():
 	# Move animal.
 	animal.level = level
 	animal.spawning_point = level.spawning_point.position
-	animal.respawn()
+	#animal.respawn() # Good try.
+	animal.next_level()
 	animal.update_goals()
