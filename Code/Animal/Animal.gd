@@ -3,6 +3,11 @@ class_name Animal ## The main class for the player input.
 
 const LIFE = preload("res://Animal/assets/life.tscn")
 
+# Preload SFX.
+const STEP_A = preload("res://Animal/assets/sfx/step_a.wav")
+const STEP_B = preload("res://Animal/assets/sfx/step_b.wav")
+const STEP_C = preload("res://Animal/assets/sfx/step_c.wav")
+
 
 # NOTE: Requirements.
 #  - Must be child of a Level.
@@ -26,7 +31,7 @@ const LIFE = preload("res://Animal/assets/life.tscn")
 
 # The secret hand shake.
 #  Hold Ctrl + Shift + Drop
-
+@onready var audio: AudioStreamPlayer3D = $Audio
 @onready var collider: CollisionShape3D = $Collider
 @onready var graphics: Node3D = $Graphics
 @onready var lives_ui: HBoxContainer = $UI/VBox/LivesUI
@@ -51,16 +56,26 @@ var spawning_point: Vector3
 var current_spot: Vector3
 var next_spot: Vector3
 
+var step_fx: Array
+
 
 func _ready() -> void:
 	# Signal hook.
 	area_entered.connect(on_entered)
 	update_lives(0)
+	step_fx = [STEP_A, STEP_B, STEP_C]
+
+
+func play_audio():
+	var rando: int = randi_range(0, step_fx.size() - 1)
+	audio.stream = step_fx[rando]
+	audio.play()
 
 
 func _process(delta: float) -> void:
 	if weight >= 1.0:
 		if Input.is_action_just_pressed("move_left"):
+			play_audio()
 			current_spot = position
 			next_spot = current_spot + Vector3.LEFT
 			weight = 0.0
@@ -68,6 +83,7 @@ func _process(delta: float) -> void:
 			graphics.rotation_degrees.y = 90.0
 		
 		if Input.is_action_just_pressed("move_right"):
+			play_audio()
 			current_spot = position
 			next_spot = current_spot + Vector3.RIGHT
 			weight = 0.0
@@ -75,6 +91,7 @@ func _process(delta: float) -> void:
 			graphics.rotation_degrees.y = -90.0
 		
 		if Input.is_action_just_pressed("move_up"):
+			play_audio()
 			riding = null
 			
 			current_spot = position
@@ -84,6 +101,7 @@ func _process(delta: float) -> void:
 			graphics.rotation_degrees.y = 0.0
 			
 		if Input.is_action_just_pressed("move_down"):
+			play_audio()
 			riding = null
 			
 			current_spot = position

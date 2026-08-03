@@ -91,12 +91,14 @@ skeleton = NodePath("../..")
 
 [node name="LaneA" parent="." unique_id=882810251 instance=ExtResource("6_kdmkb")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 4)
+speed_limit = 4.0
 
 [node name="Vehicle" parent="LaneA" unique_id=933503642 instance=ExtResource("7_b2bsv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
 
 [node name="LaneB" parent="." unique_id=738510174 instance=ExtResource("6_kdmkb")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 3)
+speed_limit = 8.0
 
 [node name="Vehicle" parent="LaneB" unique_id=265230104 instance=ExtResource("7_b2bsv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
@@ -109,6 +111,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
 
 [node name="LaneD" parent="." unique_id=1609455231 instance=ExtResource("6_kdmkb")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 1)
+speed_limit = 14.0
 
 [node name="Vehicle" parent="LaneD" unique_id=2057532043 instance=ExtResource("7_b2bsv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)

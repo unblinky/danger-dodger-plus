@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b3x2ya4csyglj"]
 
 [ext_resource type="Script" uid="uid://cld86snfb212r" path="res://Animal/Animal.gd" id="1_yvsqr"]
+[ext_resource type="AudioStream" uid="uid://ffxo5se2lv47" path="res://Animal/assets/sfx/step_a.wav" id="2_qevvk"]
 [ext_resource type="Material" uid="uid://clqq3l4q0yiqb" path="res://Animal/assets/eyeball.tres" id="2_w71v0"]
 [ext_resource type="Texture2D" uid="uid://cequy5nvke2sc" path="res://Animal/assets/life.png" id="3_qevvk"]
 
@@ -23,6 +24,9 @@ albedo_color = Color(0.5219679, 0.23040357, 0.29027018, 1)
 
 [node name="Animal" type="Area3D" unique_id=1927845697]
 script = ExtResource("1_yvsqr")
+
+[node name="Audio" type="AudioStreamPlayer3D" parent="." unique_id=814244920]
+stream = ExtResource("2_qevvk")
 
 [node name="Rig" type="Node3D" parent="." unique_id=1948816956]
 transform = Transform3D(0.909486, -0.3235424, 0.2610659, -2.1910337e-08, 0.6279631, 0.77824336, -0.4157344, -0.70780146, 0.57112384, 0, 0.10647297, -1.2470665)
